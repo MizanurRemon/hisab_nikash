@@ -37,7 +37,6 @@ void getHttp() async {
 }*/
 
 Future<Login_response> loginUser(String phone, String password) async {
- 
   var dio = Dio();
   final response = await dio.post(Base_url().url + '/user_login',
       data: {'phone': phone, 'password': password});
@@ -65,8 +64,10 @@ Future<Login_response> loginUser(String phone, String password) async {
 
 void successToast(var text) {
   Fluttertoast.showToast(
-      msg: text, // message
-      toastLength: Toast.LENGTH_SHORT, // length
+      msg: text,
+      // message
+      toastLength: Toast.LENGTH_SHORT,
+      // length
       gravity: ToastGravity.BOTTOM,
       textColor: Colors.black,
       backgroundColor: const Color.fromARGB(255, 226, 226, 226) // location
@@ -75,8 +76,10 @@ void successToast(var text) {
 
 void errorToast(var text) {
   Fluttertoast.showToast(
-      msg: text, // message
-      toastLength: Toast.LENGTH_SHORT, // length
+      msg: text,
+      // message
+      toastLength: Toast.LENGTH_SHORT,
+      // length
       gravity: ToastGravity.BOTTOM,
       textColor: Colors.white,
       backgroundColor: Colors.red);
@@ -122,8 +125,27 @@ class _LoginStateState extends State<LoginState> {
     //login = loginUser();
     //getHttp();
 
-    loginUser("01535166352", "123456");
+    //loginUser("01535166352", "123456");
+    successToast("init state");
   }
+
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+    
+    successToast("did dependencies change");
+  }
+  
+  @override
+  void didUpdateWidget(covariant LoginState oldWidget) {
+    // TODO: implement didUpdateWidget
+    super.didUpdateWidget(oldWidget);
+    
+    successToast("did update widget");
+  }
+
+  
 
   @override
   Widget build(BuildContext context) {
